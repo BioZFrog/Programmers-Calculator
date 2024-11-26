@@ -1,0 +1,179 @@
+import sys 
+
+print("BASE-N CALCULATOR BY BIOZFROG")
+option = input("""Choose an option: 
+
+1. Denary into Binary
+2. Denary into Hexadecimal
+3. Binary into Denary
+4. Binary into Hexadecimal
+5. Hexadecimal into Binary
+6. Hexadecimal into Denary
+
+""").lower()
+
+try:
+    if option == "1":
+        # Denary to Binary
+        print("\n- - - - - - - - - - - -")
+        number = int(input("Enter a Denary number: "))
+        original_number = number
+        bin_list = []
+        while number > 0:
+            remainder = number % 2
+            bin_list.append(remainder)
+            number = number // 2
+        bin_list.reverse()
+        binary = "".join(map(str, bin_list))
+        while len(binary) % 4 != 0:
+            binary = "0" + binary
+        binary = " ".join(binary[i:i+4] for i in range(0, len(binary), 4))
+        print(f"\nThe Binary for {original_number} is {binary}")
+
+    elif option == "2":
+        # Denary to Hexadecimal
+        print("\n- - - - - - - - - - - -")
+        number = int(input("Enter a Denary number: "))
+        original_number = number
+        remain_list = []
+        hex_digits = "0123456789ABCDEF"
+        while number > 0:
+            remainder = number % 16
+            remain_list.append(hex_digits[remainder]) 
+            number = number // 16
+        remain_list.reverse()
+        hex_result = "".join(remain_list)
+        print(f"\nThe Hex for {original_number} is {hex_result}")
+        
+    elif option == "3":
+        # Binary in Denary
+        print("\n- - - - - - - - - - - -")
+        number = input("Enter a Binary number: ")
+        original_number = number
+        if not all(char in "01" for char in original_number):
+            sys.exit()
+        power = 0
+        denary_sum = 0
+        for digit in reversed(number):
+            digit = int(digit)
+            denary = result = digit * (2 ** power)
+            power +=1 
+            denary_sum += denary
+        print(f"\nThe Denary of {original_number} is {denary_sum}")
+    elif option == "4":
+        # Binary in Hex
+        print("\n- - - - - - - - - - - -")
+        number = input("Enter a Binary number: ")
+        original_number = number
+        hex_num = ""
+        if len(original_number) < 4 or not all(char in "01" for char in original_number):
+            sys.exit()
+        while len(number) % 4 != 0:
+            sys.exit()
+        chunks = [number[i:i+4] for i in range(0, len(number), 4)]
+        for chunk in chunks:
+            if chunk == "0000":
+                hex_num += "0"
+            elif chunk == "0001":
+                hex_num += "1"
+            elif chunk == "0010":
+                hex_num += "2"
+            elif chunk == "0011":
+                hex_num += "3"
+            elif chunk == "0100":
+                hex_num += "4"
+            elif chunk == "0101":
+                hex_num += "5"
+            elif chunk == "0110":
+                hex_num += "6"
+            elif chunk == "0111":
+                hex_num += "7"
+            elif chunk == "1000":
+                hex_num += "8"
+            elif chunk == "1001":
+                hex_num += "9"
+            elif chunk == "1010":
+                hex_num += "A"
+            elif chunk == "1011":
+                hex_num += "B"
+            elif chunk == "1100":
+                hex_num += "C"
+            elif chunk == "1101":
+                hex_num += "D"
+            elif chunk == "1110":
+                hex_num += "E"
+            elif chunk == "1111":
+                hex_num += "F"
+        print(f"\nThe Hex of {original_number} is {hex_num}")
+    elif option == "5":
+        # Hex in Binary
+        print("\n- - - - - - - - -")
+        number = input("Enter a Hex value: ")
+        original_number = number
+        if not all(char in "0123456789ABCDEF" for char in original_number):
+            sys.exit()
+        bin_num = ""
+        for digit in number:
+            digit = str(digit)
+            if digit == "0":
+                bin_num += "0000 "
+            elif digit == "1":
+                bin_num += "0001 "
+            elif digit == "2":
+                bin_num += "0010 "
+            elif digit == "3":
+                bin_num += "0011 "
+            elif digit == "4":
+                bin_num += "0100 "
+            elif digit == "5":
+                bin_num += "0101 "
+            elif digit == "6":
+                bin_num += "0110 "
+            elif digit == "7":
+                bin_num += "0111 "
+            elif digit == "8":
+                bin_num += "1000 "
+            elif digit == "9":
+                bin_num += "1001 "
+            elif digit == "A":
+                bin_num += "1010 "
+            elif digit == "B":
+                bin_num += "1011 "
+            elif digit == "C":
+                bin_num += "1100 "
+            elif digit == "D":
+                bin_num += "1101 "
+            elif digit == "E":
+                bin_num += "1110 "
+            elif digit == "F":
+                bin_num += "1111 "
+        print(f"\nThe Binary value of Hex {original_number} is {bin_num}")
+    elif option == "6":
+        # Hex in Denary
+        print("\n- - - - - - - - -")
+        number = input("Enter a Hex value: ").upper() 
+        original_number = number
+        denary_sum = 0
+
+        for digit in number:
+            if digit == "A":
+                value = 10
+            elif digit == "B":
+                value = 11
+            elif digit == "C":
+                value = 12
+            elif digit == "D":
+                value = 13
+            elif digit == "E":
+                value = 14
+            elif digit == "F":
+                value = 15
+            else:
+                value = int(digit)
+
+            denary_sum = denary_sum * 16 + value
+        print(f"\nThe Decimal (Denary) value of Hex {original_number} is {denary_sum}")
+    else:
+        print("\nIncorrect Input Detected.")
+except:
+    print("\nIncorrect Input Detected.")
