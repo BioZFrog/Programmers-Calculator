@@ -1,29 +1,30 @@
 import sys 
+import colour
 
-print("\n========BASE-N CALCULATOR BY BIOZFROG========")
+print("\n========COMPLETE PROGRAMMER'S CALCULATOR BY BIOZFROG========")
 option = input("""Choose an option: 
 
-1. Denary into Binary
-2. Denary into Hexadecimal
-3. Denary into Octal
-4. Binary into Denary
-5. Binary into Hexadecimal
-6. Binary into Octal
-7. Hexadecimal into Binary
-8. Hexadecimal into Denary
-9. Hexadecimal into Octal
-10. Octal into Denary
-11. Octal into Binary
-12. Octal into Hexadecimal
+    1. Denary into Binary
+    2. Denary into Hexadecimal
+    3. Denary into Octal
+    4. Binary into Denary
+    5. Binary into Hexadecimal
+    6. Binary into Octal
+    7. Hexadecimal into Binary
+    8. Hexadecimal into Denary
+    9. Hexadecimal into Octal
+    10. Octal into Denary
+    11. Octal into Binary
+    12. Octal into Hexadecimal\n
 O. other calculations.....
 
 """).lower()
-
 try:
+    
     if option == "1":
         # Denary to Binary
-        print("\n- - - - - - - - - - - -")
-        number = int(input("Enter a Denary number: "))
+        print("\n    - - - - - - - - - - - -")
+        number = int(input("    Enter a Denary number: "))
         original_number = number
         bin_list = []
         while number > 0:
@@ -35,12 +36,11 @@ try:
         while len(binary) % 4 != 0:
             binary = "0" + binary
         binary = " ".join(binary[i:i+4] for i in range(0, len(binary), 4))
-        print(f"\nThe Binary for {original_number} is {binary}")
-
+        print(f"\n    The Binary for {original_number} is {binary}")
     elif option == "2":
         # Denary to Hexadecimal
-        print("\n- - - - - - - - - - - -")
-        number = int(input("Enter a Denary number: "))
+        print("\n    - - - - - - - - - - - -")
+        number = int(input("    Enter a Denary number: "))
         original_number = number
         remain_list = []
         hex_digits = "0123456789ABCDEF"
@@ -50,12 +50,12 @@ try:
             number = number // 16
         remain_list.reverse()
         hex_result = "".join(remain_list)
-        print(f"\nThe Hex for {original_number} is {hex_result}")
+        print(f"\n    The Hex for {original_number} is {hex_result}")
         
     elif option == "3":
         # Denary to Octal
-        print("\n- - - - - - - - - - - -")
-        number = int(input("Enter a Denary number: "))
+        print("\n    - - - - - - - - - - - -")
+        number = int(input("    Enter a Denary number: "))
         original_number = number
         oct_list = []
         while number > 0:
@@ -64,12 +64,12 @@ try:
             number = number // 8
         oct_list.reverse()
         oct = "".join(map(str, oct_list))
-        print(f"\nThe Hex value fo {original_number} is {oct}")
+        print(f"\n    The Hex value fo {original_number} is {oct}")
         
     elif option == "4":
         # Binary to Denary
-        print("\n- - - - - - - - - - - -")
-        number = input("Enter a Binary number: ")
+        print("\n    - - - - - - - - - - - -")
+        number = input("    Enter a Binary number: ")
         original_number = number
         if not all(char in "01" for char in original_number):
             sys.exit()
@@ -80,12 +80,11 @@ try:
             denary = result = digit * (2 ** power)
             power +=1 
             denary_sum += denary
-        print(f"\nThe Denary of {original_number} is {denary_sum}")
-
+        print(f"\n    The Denary of {original_number} is {denary_sum}")
     elif option == "5":
         # Binary to Hex
-        print("\n- - - - - - - - - - - -")
-        number = input("Enter a Binary number: ")
+        print("\n    - - - - - - - - - - - -")
+        number = input(    "Enter a Binary number: ")
         original_number = number
         hex_num = ""
         if len(original_number) < 4 or not all(char in "01" for char in original_number):
@@ -126,12 +125,11 @@ try:
                 hex_num += "E"
             elif chunk == "1111":
                 hex_num += "F"
-        print(f"\nThe Hex of {original_number} is {hex_num}")
-
+        print(f"\n    The Hex of {original_number} is {hex_num}")
     elif option == "6":
         # Binary to Octal
-        print("\n- - - - - - - - - - - -")
-        number = input("Enter a Binary number: ")
+        print("\n    - - - - - - - - - - - -")
+        number = input("    Enter a Binary number: ")
         original_number = number
         oct_num = ""
         if len(original_number) < 3 or not all(char in "01" for char in original_number):
@@ -156,12 +154,11 @@ try:
                 oct_num += "6"
             elif chunk == "111":
                 oct_num += "7"
-        print(f"\nThe Hex of {original_number} is {oct_num}")
-
+        print(f"\n    The Hex of {original_number} is {oct_num}")
     elif option == "7":
         # Hex to Binary
-        print("\n- - - - - - - - -")
-        number = input("Enter a Hex value: ")
+        print("\n    - - - - - - - - -")
+        number = input("    Enter a Hex value: ")
         original_number = number
         if not all(char in "0123456789ABCDEF" for char in original_number):
             sys.exit()
@@ -200,15 +197,13 @@ try:
                 bin_num += "1110 "
             elif digit == "F":
                 bin_num += "1111 "
-        print(f"\nThe Binary value of Hex {original_number} is {bin_num}")
-
+        print(f"\n    The Binary value of Hex {original_number} is {bin_num}")
     elif option == "8":
         # Hex to Denary
-        print("\n- - - - - - - - -")
-        number = input("Enter a Hex value: ").upper() 
+        print("\n    - - - - - - - - -")
+        number = input("    Enter a Hex value: ").upper() 
         original_number = number
         denary_sum = 0
-
         for digit in number:
             if digit == "A":
                 value = 10
@@ -224,14 +219,12 @@ try:
                 value = 15
             else:
                 value = int(digit)
-
             denary_sum = denary_sum * 16 + value
-        print(f"\nThe Decimal (Denary) value of Hex {original_number} is {denary_sum}")
-
+        print(f"\n    The Decimal (Denary) value of Hex {original_number} is {denary_sum}")
     elif option == "9":
         # Hex to Octal (First hex to denary then denary to octal)
-        print("\n- - - - - - - - -")
-        number = input("Enter a Hex value: ")
+        print("\n    - - - - - - - - -")
+        number = input("    Enter a Hex value: ")
         original_number = number
         denary_sum = 0
         oct_list = []
@@ -250,7 +243,6 @@ try:
                 value = 15
             else:
                 value = int(digit)
-
             denary_sum = denary_sum * 16 + value
         while denary_sum > 0:
             remainder = denary_sum % 8
@@ -258,11 +250,11 @@ try:
             denary_sum = denary_sum // 8
         oct_list.reverse()
         oct = "".join(map(str, oct_list))
-        print(f"\nThe Hex value fo {original_number} is {oct}")
+        print(f"\n    The Hex value fo {original_number} is {oct}")
     elif option == "10":
         # Octal to Denary
-        print("\n- - - - - - - - - - ")
-        number = input("Enter a Octal number: ")
+        print("\n    - - - - - - - - - - ")
+        number = input("    Enter a Octal number: ")
         original_number = number
         power = 0
         denary_sum = 0
@@ -271,14 +263,13 @@ try:
             result = digit * (8 ** power)
             power +=1 
             denary_sum += result
-        print(f"\nThe Denary of {original_number} is {denary_sum}")
+        print(f"\n    The Denary of {original_number} is {denary_sum}")
     elif option == "11":
         # Octal to Binary
-        print("\n- - - - - - - - - - ")
-        number = input("Enter an Octal number: ")
+        print("\n    - - - - - - - - - - ")
+        number = input("    Enter an Octal number: ")
         original_number = number
         bin_num = ""
-
         for digit in number:
             if digit == "0":
                 bin_num += "000 "
@@ -297,11 +288,11 @@ try:
             elif digit == "7":
                 bin_num += "111 "
         bin_num = bin_num.rstrip()
-        print(f"\nThe Binary of {original_number} is {bin_num}")
+        print(f"\n    The Binary of {original_number} is {bin_num}")
     elif option == "12":
         # Octal to Hexadecimal
-        print("\n- - - - - - - - - - ")
-        number = input("Enter an Octal number: ")
+        print("\n    - - - - - - - - - - ")
+        number = input("    Enter an Octal number: ")
         original_number = number
         power = 0
         denary_sum = 0
@@ -318,11 +309,12 @@ try:
             denary_sum = denary_sum // 16
         remain_list.reverse()
         hex_result = "".join(remain_list)
-        print(f"\nThe Binary of {original_number} is {hex_result}")
+        print(f"\n    The Binary of {original_number} is {hex_result}")
     elif option == "o" or option == "O":
-        option_sec = input("""\n\nChoose any number system calculation:
-
-1. Two's Complement Format (4 bits representation)""")
+        option_sec = input("""\n\nChoose any number system calculation:\n
+        1. Two's Complement Format (4 bits representation)
+        2. Logical Shifts
+        3. Color Hex Code & RGB values """)
         if option_sec == "1":
             print("\n    - - - - - - - - ")
             num = int(input("    Enter a number: "))
@@ -332,7 +324,6 @@ try:
             bin_list = []
             answer = []
             inverted_num = ""
-
             while num > 0:
                 remainder = num % 2
                 bin_list.append(remainder)
@@ -342,7 +333,6 @@ try:
             while len(binary) % 4 != 0:
                 binary = "0" + binary
             binary = " ".join(binary[i:i+4] for i in range(0, len(binary), 4))
-
             for char in binary:
                 if char == "0":
                     inverted_num += "1"
@@ -358,7 +348,6 @@ try:
                 denary = result = digit * (2 ** power)
                 power +=1 
                 denary_sum += denary
-
             denary_sum += 1
             while denary_sum > 0:
                 remainder = denary_sum % 2
@@ -369,8 +358,58 @@ try:
             while len(answer) % 4 != 0:
                 answer = "0" + answer
             answer = " ".join(answer[i:i+4] for i in range(0, len(answer), 4))
-
-            print(f"   {input} ({original_number}) in Two's complement is {answer}")
+            print(f"\n    {input} ({original_number}) in Two's complement is {answer}")
+        elif option_sec == "2":
+            print("\n    - - - - - - - - ")
+            bin_in = input("    Enter a Binary: ")
+            inp = bin_in
+            power = 0
+            inp_denary = 0
+            for digit in reversed(bin_in):
+                digit = int(digit)
+                denary = result = digit * (2 ** power)
+                power +=1 
+                inp_denary += denary
+            bin_time = int(input(f"    How many times do you want to Shift {inp}: "))
+            bin_side = input("    Which kind of Logical Shift would you like to execute? (Right, Left): ")
+            bin_list = []
+            if not all(char in "01" for char in bin_in):
+                sys.exit()
+            for char in bin_in:
+                bin_list.append(int(char))
+            
+            if bin_side == "Right" or bin_side == "right" or bin_side == "r" or bin_side == "R":
+                bin_list = [0] * bin_time + bin_list[:-bin_time]
+                answer = "".join(map(str, bin_list))
+                power = 0
+                answer_denary = 0
+                for digit in reversed(str(answer)):
+                    digit = int(digit)
+                    denary = result = digit * (2 ** power)
+                    power +=1 
+                    answer_denary += denary
+                print(f"\n    {inp} ({inp_denary}) >> {bin_time} = {answer} ({answer_denary})")
+            elif bin_side == "Left" or bin_side == "left" or bin_side == "l" or bin_side == "L":
+                bin_list = bin_list[bin_time:]
+                answer = "".join(map(str, bin_list))
+                answer = answer + "0"
+                power = 0
+                answer_denary = 0
+                for digit in reversed(str(answer)):
+                    digit = int(digit)
+                    denary = result = digit * (2 ** power)
+                    power +=1 
+                    answer_denary += denary
+                print(f"\n    {inp} ({inp_denary}) << {bin_time} = {answer} ({answer_denary})")
+        elif option_sec == "3":
+            print("\n    - - - - - - - - - - ")
+            color_name = input("    Enter a color name: ")
+            rgb = colour.Color(color_name).rgb
+            r = int(rgb[0]*255)
+            g = int(rgb[1]*255)
+            b = int(rgb[2]*255)
+            hex_code = '#{:02x}{:02x}{:02x}'.format(r, g, b)
+            print(f"    \nThe RGB value of {color_name} is ({r}, {g}, {b}) and Hex code is {hex_code}")
 
     else:
         print("\nIncorrect Input Detected.")
