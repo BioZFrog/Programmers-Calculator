@@ -15,6 +15,7 @@ option = input("""Choose an option:
 10. Octal into Denary
 11. Octal into Binary
 12. Octal into Hexadecimal
+O. other calculations.....
 
 """).lower()
 
@@ -318,6 +319,58 @@ try:
         remain_list.reverse()
         hex_result = "".join(remain_list)
         print(f"\nThe Binary of {original_number} is {hex_result}")
+    elif option == "o" or option == "O":
+        option_sec = input("""\n\nChoose any number system calculation:
+
+1. Two's Complement Format (4 bits representation)""")
+        if option_sec == "1":
+            print("\n    - - - - - - - - ")
+            num = int(input("    Enter a number: "))
+            input = num
+            original_number = num
+            num = abs(num)
+            bin_list = []
+            answer = []
+            inverted_num = ""
+
+            while num > 0:
+                remainder = num % 2
+                bin_list.append(remainder)
+                num = num // 2
+            bin_list.reverse()
+            binary = "".join(map(str, bin_list))
+            while len(binary) % 4 != 0:
+                binary = "0" + binary
+            binary = " ".join(binary[i:i+4] for i in range(0, len(binary), 4))
+
+            for char in binary:
+                if char == "0":
+                    inverted_num += "1"
+                elif char == "1":
+                    inverted_num += "0"
+            original_number = inverted_num
+            if not all(char in "01" for char in original_number):
+                sys.exit()
+            power = 0
+            denary_sum = 0
+            for digit in reversed(inverted_num):
+                digit = int(digit)
+                denary = result = digit * (2 ** power)
+                power +=1 
+                denary_sum += denary
+
+            denary_sum += 1
+            while denary_sum > 0:
+                remainder = denary_sum % 2
+                answer.append(remainder)
+                denary_sum = denary_sum // 2
+            answer.reverse()
+            answer = "".join(map(str, answer))
+            while len(answer) % 4 != 0:
+                answer = "0" + answer
+            answer = " ".join(answer[i:i+4] for i in range(0, len(answer), 4))
+
+            print(f"   {input} ({original_number}) in Two's complement is {answer}")
 
     else:
         print("\nIncorrect Input Detected.")
